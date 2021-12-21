@@ -10,6 +10,7 @@ import Navigation from './pages/partials/Navigation'
 import PageNotFound from './pages/PageNotFound'
 import SignupPage from './pages/SignupPage'
 import UpdateProfilePage from './pages/UpdateProfilePage'
+import UploadMemePage from './pages/UploadMeme'
 
 function App() {
 	return (
@@ -24,25 +25,40 @@ function App() {
 					<Route path="/signup" element={<SignupPage />} />
 
 					{/* Protected routes */}
-					<Route path="/" element={
-						<RequireAuth redirectTo="/login">
-							<HomePage />
-						</RequireAuth>
-					} />
+					<Route
+						path="/"
+						element={
+							<RequireAuth redirectTo="/login">
+								<HomePage />
+							</RequireAuth>
+						}
+					/>
 
-					<Route path="/update-profile" element={
-						<RequireAuth redirectTo="/login">
-							<UpdateProfilePage />
-						</RequireAuth>
-					} />
+					<Route
+						path="/upload-meme"
+						element={
+							<RequireAuth redirectTo="/login">
+								<UploadMemePage />
+							</RequireAuth>
+						}
+					/>
+
+					<Route
+						path="/update-profile"
+						element={
+							<RequireAuth redirectTo="/login">
+								<UpdateProfilePage />
+							</RequireAuth>
+						}
+					/>
 
 					<Route path="*" element={<PageNotFound />} />
 				</Routes>
 			</Container>
 
-			<ReactQueryDevtools initialIsOpen={false} position='bottom-right' />
+			<ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
 		</>
-	)
+	);
 }
 
 export default App
